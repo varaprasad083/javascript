@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body{
+        align-items: center;
+    display: flex;
+    justify-content: center;
+
+    }
+    .box{
+   display: flex;
+    width: 400px;
+        flex-direction: column;
+        border: 1px solid #ccc;
+        padding: 10px;
+}
+button{
+    background-color: rgb(228, 228, 45);
+    border: none;
+    border-radius: 20px;
+    height: 30px;
+    cursor: pointer;
+}
+
+input{
+    border-radius: 20px;
+    border-width: 1px;
+    border-color: grey;
+    height: 25px;
+}
+</style>
+
+<script>
+    function register() {
+        const name = document.getElementById("name").value;
+        const phone =document.getElementById("phone").value;
+        const gmail = document.getElementById("gmail").value;
+        const password = document.getElementById("password").value;
+        const dob = document.getElementById("dob").value;
+        const city = document.getElementById("city").value;
+        const pincode = document.getElementById("pincode").value;
+        const state = document.getElementById("state").value;
+        
+        const userInfo = {
+            Name: name,
+            Phone: phone,
+            Gmail: gmail,
+            Password: password,
+            dob:dob,
+            City:city,
+            pincode:pincode,
+            state:state
+        };
+
+        
+        console.log(userInfo);
+        alert("User Registered Successfully")
+    }
+
+    function enforceMaxLength(event) {
+            const input = event.target;
+            const maxLength = input.getAttribute('maxlength');
+            if (input.value.length > maxLength) {
+                input.value = input.value.slice(0, maxLength);
+            }
+          
+        }
+
+      
+        function checkPasswordLength(event) {
+            const pass = event.target.value.length;
+            if (pass < 8) {
+                alert("The password should have at least 8 characters");
+            }
+        }
+    
+</script>
+<body>
+    
+    <div class="box">
+        <label> Name</label>
+        <input id="name" type="text" style="margin-bottom: 5px;" value="">
+        <label> Phone no</label>
+        <input id="phone" type="number"style="margin-bottom: 5px;"  value ="" maxlength="10"  oninput="enforceMaxLength(event)">
+        <label> Gmail</label>
+        <input id="gmail" type="text" style="margin-bottom: 5px;" value ="">
+        <label> Password</label>
+        <input  id="password"type="password" style="margin-bottom: 5px;" value =""  minlength="8" onblur="checkPasswordLength(event)">
+
+        <label> Date of birth</label>
+        <input id="dob" type="date" style="margin-bottom: 5px;" value ="">
+        
+        <label> Pincode</label>
+        <input id="pincode" type="number" style="margin-bottom: 5px;" value ="" maxlength="6"  oninput="enforceMaxLength(event)">
+
+        <label> City</label>
+        <input id="city" type="text" style="margin-bottom: 5px;" value ="">
+        <label> State</label>
+        <input id="state" type="text" style="margin-bottom: 5px;" value ="">
+
+        <button type="button" onclick="register()" style="margin-top: 5px;" >Register</button>
+    </div>
+</body>
+</html>
