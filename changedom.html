@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Quote Changer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .quote-box {
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 90%;
+            transition: opacity 0.5s;
+        }
+
+        .quote-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .quote-author {
+            font-size: 18px;
+            color: #555;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const quotes = [
+        { text: "The greatest glory in living lies not in never falling, but in rising every time we fall.", author: "Nelson Mandela" },
+        { text: "The way to get started is to quit talking and begin doing.", author: "Walt Disney" },
+        { text: "Your time is limited, so don't waste it living someone else's life.", author: "Steve Jobs" },
+        { text: "If life were predictable it would cease to be life, and be without flavor.", author: "Eleanor Roosevelt" },
+        { text: "If you look at what you have in life, you'll always have more.", author: "Oprah Winfrey" }
+    ];
+    let index = 0;
+
+    const quoteBox = document.querySelector('.quote-box');
+    const quoteText = document.querySelector('.quote-text');
+    const quoteAuthor = document.querySelector('.quote-author');
+
+    function updateQuote() {
+        quoteBox.style.opacity = 0;
+        setTimeout(() => {
+            const currentQuote = quotes[index];
+            quoteText.textContent = currentQuote.text;
+            quoteAuthor.textContent = `- ${currentQuote.author}`;
+            index = (index + 1) % quotes.length;
+            quoteBox.style.opacity = 1;
+        }, 500);
+    }
+
+    setInterval(updateQuote, 2000);
+});
+
+    </script>
+</head>
+<body>
+    <div class="quote-box">
+        <div class="quote-text">Initial Quote</div>
+        <div class="quote-author">- Author</div>
+    </div>
+
+   
+</body>
+</html>
